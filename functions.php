@@ -5,12 +5,16 @@
 
 namespace DustPressStarter;
 
-// Enable DustPress.
-if ( function_exists( 'dustpress' ) ) {
-    \DustPress();
-}
-else {
-    wp_die('DustPress must be installed when using the DustPress Starter Theme!');
+//Prevent dustpress or wp_die for the admin so starters have access to a Dashboard in any case.
+if ( !is_admin() ) {
+	
+	// Enable DustPress.
+	if ( function_exists( 'dustpress' ) ) {
+		\DustPress();
+	}
+	else {
+		wp_die('DustPress must be installed when using the DustPress Starter Theme!');
+	}
 }
 
 // Define some constants.
